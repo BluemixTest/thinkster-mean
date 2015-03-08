@@ -25,10 +25,7 @@ app.factory('posts', function(){
 	return o;
 });
 
-app.config([
-'$stateProvider',
-'$urlRouterProvider',
-function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('home');
 
   $stateProvider
