@@ -37,4 +37,8 @@ function($stateProvider, $urlRouterProvider) {
       templateUrl: './home.html',
       controller: 'MainCtrl'
     })
+    .state('secret', {
+      url: '/secret',
+      templateUrl: './secret.html'
+    })
 }]);
