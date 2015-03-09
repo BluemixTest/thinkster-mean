@@ -27,6 +27,7 @@ router.post('/posts', function(req, res, next){
 	})
 });
 
+//What does this do?
 router.param('post', function(req, res, next, id){
 	var query = Post.findById(id);
 
@@ -39,6 +40,7 @@ router.param('post', function(req, res, next, id){
 	})
 });
 
+//When we define a route URL with :post in it, this function will be run first.
 router.get('/posts/:post', function(req, res) {
   res.json(req.post);
 });
