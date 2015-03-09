@@ -20,6 +20,10 @@ app.controller('MainCtrl', ['$scope', 'posts', function ($scope, posts){
 	};
 }]);
 
+app.controller('PostsCtrl', ['$scope', '$stateParams', 'posts', function ($scope, $stateParams, posts){
+	
+}]);
+
 app.factory('posts', function(){
 	var o = {
 		posts: []
