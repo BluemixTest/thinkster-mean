@@ -3,6 +3,7 @@ var app = angular.module('flapperNews', ['ui.router']);
 app.controller('MainCtrl', ['$scope', 'posts', function ($scope, posts){
 	$scope.test = 'Hello World!';
 	$scope.posts = posts.posts;
+
 	$scope.addPost = function(){
 		if(!$scope.title || $scope.title === '') { return; }
 		$scope.posts.push({
@@ -13,6 +14,7 @@ app.controller('MainCtrl', ['$scope', 'posts', function ($scope, posts){
 		$scope.title = '';
 		$scope.link = '';
 	};
+
 	$scope.incrementUpvotes = function(post){
 		post.upvotes++;
 	};
@@ -33,6 +35,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       url: '/home',
       templateUrl: './home.html',
       controller: 'MainCtrl'
+    })
+    .state('posts', {
+      url: '/posts/{id}',
+      templateUrl: './posts.html',
+      controller: 'PostsCtrl'
     })
     .state('secret', {
       url: '/secret',
