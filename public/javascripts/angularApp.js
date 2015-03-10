@@ -6,14 +6,9 @@ app.controller('MainCtrl', ['$scope', 'posts', function ($scope, posts){
 
 	$scope.addPost = function(){
 		if(!$scope.title || $scope.title === '') { return; }
-		$scope.posts.push({
+		posts.create({
 			title: $scope.title, 
 			link: $scope.link,
-			upvotes: 0,
-			comments: [
-				{author: 'Joe', body: 'Cool post!', upvotes: 0},
-				{author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
-			]
 		});
 		$scope.title = '';
 		$scope.link = '';
@@ -46,6 +41,12 @@ app.factory('posts', ['$http', function($http){
 	o.getAll = function() {
 		return $http.get('/posts').success(function(data){
 			angular.copy(data, o.posts);
+		});
+	};
+
+	o.create = function(newPost) {
+		return $http.post('/posts', newPost).success(function(data){
+			o.posts.push(data);
 		});
 	};
 
