@@ -40,15 +40,7 @@ app.controller('PostsCtrl', ['$scope', '$stateParams', 'posts', function ($scope
 
 app.factory('posts', function(){
 	var o = {
-		posts: [{
-			title: 'This is reddit', 
-			link: 'http://www.reddit.com/',
-			upvotes: 2,
-			comments: [
-				{author: 'Chris', body: 'I like it', upvotes: 1},
-				{author: 'Sharon', body: 'I can browse this all day', upvotes: 2}
-			]
-		}]
+		posts: []
 	};
 	return o;
 });
