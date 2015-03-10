@@ -45,4 +45,13 @@ router.get('/posts/:post', function(req, res) {
   res.json(req.post);
 });
 
+//Define a route to call the upvote function in Posts schema
+router.put('/posts/:post/upvote', function(req, res, next) {
+	req.post.upvote(function(err, post){
+		if (err) { return next(err); }
+
+		res.json(post);
+	});
+});
+
 module.exports = router;
