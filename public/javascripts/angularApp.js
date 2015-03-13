@@ -24,10 +24,11 @@ app.controller('PostsCtrl', ['$scope', '$stateParams', 'posts', 'post', function
 
 	$scope.addComment = function(){
 		if ($scope.body === '') { return; }
-		$scope.post.comments.push({
-			author: 'user',
+		posts.addComment(post._id, {
 			body: $scope.body,
-			upvotes: 0
+			author: 'user'
+		}).success(function(comment){
+			$scope.post.comments.push(comment);
 		});
 		$scope.body = '';
 	}
@@ -60,6 +61,10 @@ app.factory('posts', ['$http', function($http){
 		return $http.put('/posts/'+post._id+'/upvote', post).success(function(data){
 			post.upvotes++;
 		});
+	};
+
+	o.addComment = function(id, comment) {
+		return $http.post('/posts/'+id+'/comments', comment);
 	};
 
 	return o;
